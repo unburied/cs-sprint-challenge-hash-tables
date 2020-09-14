@@ -1,8 +1,27 @@
 def intersection(arrays):
     """
-    YOUR CODE HERE
+    Given an array of arrays
+    add elements to dict along with current array index
+    and a false flag. if value is in next array, update with
+    a true flag and current array index
+    return keys of values == true
     """
     # Your code here
+    nums = {}
+
+    # traverse each array in arrays
+    for i in range(len(arrays)):
+        # check if item is already in nums from previous array, update dict if it isnt
+        for j in arrays[i]:
+            if j in nums:
+                # use index i in a tuple to check which array updated value
+                if nums[j][1] != i:
+                    nums[j] = (True, i)
+            else:
+                nums[j] = (False, i)
+    
+    # break nums into its k,v and add key to list if the value is set to true
+    result = [key for key,val in nums.items() if val[0]]
 
     return result
 
