@@ -7,18 +7,16 @@ def has_negatives(a):
     """
     # Your code here
 
-    nums = {num:False for num in a}
+    nums = {num:None for num in a}
+    result = []
 
     for key in nums:
         make_neg = key * -1
         
         # check if the positive value has a neg in the dict
         if key > 0 and make_neg in nums:
-            nums[key] = True
+            result.append(key)
 
-    # add all keys whose value is true to return list
-    result = [k for k,v in nums.items() if v]
-    
     return result
 
 
